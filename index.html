@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 스마트 여행 가이드</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">🌍 스마트 여행 가이드</h1>
+            <p class="subtitle">AI가 추천하는 맞춤형 여행 코스</p>
+        </header>
+
+        <main class="main-content">
+            <form id="travelForm" class="travel-form">
+                <!-- 여행지 입력 -->
+                <div class="form-group">
+                    <label for="destination" class="form-label">
+                        <i class="fas fa-map-marker-alt"></i>
+                        어디로 떠나고 싶으세요?
+                    </label>
+                    <input 
+                        type="text" 
+                        id="destination" 
+                        name="destination" 
+                        class="form-input" 
+                        placeholder="예: 일본 도쿄, 프랑스 파리"
+                        required
+                    >
+                </div>
+
+                <!-- 인원수 선택 -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-users"></i>
+                        인원수
+                    </label>
+                    <div class="radio-group">
+                        <label class="radio-item">
+                            <input type="radio" name="people" value="1" required>
+                            <span class="radio-custom"></span>
+                            혼자 (1명)
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="people" value="2" required>
+                            <span class="radio-custom"></span>
+                            둘이서 (2명)
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="people" value="3-4" required>
+                            <span class="radio-custom"></span>
+                            소그룹 (3-4명)
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="people" value="5+" required>
+                            <span class="radio-custom"></span>
+                            대그룹 (5명+)
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 성별 선택 -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-venus-mars"></i>
+                        성별
+                    </label>
+                    <div class="radio-group">
+                        <label class="radio-item">
+                            <input type="radio" name="gender" value="남성" required>
+                            <span class="radio-custom"></span>
+                            남성
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="gender" value="여성" required>
+                            <span class="radio-custom"></span>
+                            여성
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="gender" value="혼성" required>
+                            <span class="radio-custom"></span>
+                            혼성/기타
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 나이대 선택 -->
+                <div class="form-group">
+                    <label for="age" class="form-label">
+                        <i class="fas fa-birthday-cake"></i>
+                        나이대
+                    </label>
+                    <select id="age" name="age" class="form-select" required>
+                        <option value="">나이대를 선택해주세요</option>
+                        <option value="10대">10대</option>
+                        <option value="20대">20대</option>
+                        <option value="30대">30대</option>
+                        <option value="40대">40대</option>
+                        <option value="50대">50대</option>
+                        <option value="60대 이상">60대 이상</option>
+                    </select>
+                </div>
+
+                <!-- 여행 스타일 -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-heart"></i>
+                        여행 스타일 (중복 선택 가능)
+                    </label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="style" value="솔로여행">
+                            <span class="checkbox-custom"></span>
+                            솔로여행
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="style" value="휴양여행">
+                            <span class="checkbox-custom"></span>
+                            휴양여행
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="style" value="가족여행">
+                            <span class="checkbox-custom"></span>
+                            가족여행
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="style" value="커플여행">
+                            <span class="checkbox-custom"></span>
+                            커플여행
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="style" value="비즈니스출장">
+                            <span class="checkbox-custom"></span>
+                            비즈니스출장
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 여행 일수 -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-calendar-alt"></i>
+                        여행 일수: <span id="daysValue">4</span>일
+                    </label>
+                    <div class="slider-container">
+                        <input 
+                            type="range" 
+                            id="days" 
+                            name="days" 
+                            min="1" 
+                            max="7" 
+                            value="4" 
+                            class="form-slider"
+                        >
+                        <div class="slider-labels">
+                            <span>1일</span>
+                            <span>7일</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 예산 규모 -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-won-sign"></i>
+                        예산 규모 (1인당)
+                    </label>
+                    <div class="radio-group">
+                        <label class="radio-item">
+                            <input type="radio" name="budget" value="100만원 미만" required>
+                            <span class="radio-custom"></span>
+                            100만원 미만
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="budget" value="100-200만원" required>
+                            <span class="radio-custom"></span>
+                            100-200만원
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="budget" value="200만원 이상" required>
+                            <span class="radio-custom"></span>
+                            200만원 이상
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 제출 버튼 -->
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-plane"></i>
+                    여행 경로 추천받기
+                </button>
+            </form>
+
+            <!-- 결과 출력 영역 -->
+            <div id="result" class="result-section" style="display: none;">
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p>AI가 맞춤형 여행 코스를 생성하고 있습니다...</p>
+                </div>
+                <div id="recommendation" class="recommendation" style="display: none;">
+                    <!-- AI 추천 결과가 여기에 표시됩니다 -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
